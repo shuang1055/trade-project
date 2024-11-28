@@ -1,4 +1,4 @@
-namespace trade_project
+namespace trade_app
 {
     public partial class Form1 : Form
     {
