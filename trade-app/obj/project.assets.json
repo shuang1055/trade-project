@@ -14,11 +14,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\trade-project\\trade-project\\trade-project.csproj",
-      "projectName": "trade-project",
-      "projectPath": "D:\\trade-project\\trade-project\\trade-project.csproj",
+      "projectUniqueName": "D:\\trade-project\\trade-app\\trade-app.csproj",
+      "projectName": "trade-app",
+      "projectPath": "D:\\trade-project\\trade-app\\trade-app.csproj",
       "packagesPath": "C:\\Users\\ShuangShuang\\.nuget\\packages\\",
-      "outputPath": "D:\\trade-project\\trade-project\\obj\\",
+      "outputPath": "D:\\trade-project\\trade-app\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

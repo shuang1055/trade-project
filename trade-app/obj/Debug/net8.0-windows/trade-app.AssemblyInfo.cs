@@ -11,12 +11,12 @@
 using System;
 using System.Reflection;
 
-[assembly: System.Reflection.AssemblyCompanyAttribute("trade-project")]
+[assembly: System.Reflection.AssemblyCompanyAttribute("trade-app")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
-[assembly: System.Reflection.AssemblyProductAttribute("trade-project")]
-[assembly: System.Reflection.AssemblyTitleAttribute("trade-project")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+3f14df73bf604d62c8c5b80e593460065ae634bd")]
+[assembly: System.Reflection.AssemblyProductAttribute("trade-app")]
+[assembly: System.Reflection.AssemblyTitleAttribute("trade-app")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
 [assembly: System.Runtime.Versioning.TargetPlatformAttribute("Windows7.0")]
 [assembly: System.Runtime.Versioning.SupportedOSPlatformAttribute("Windows7.0")]
