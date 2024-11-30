@@ -2,10 +2,65 @@
 //
 
 #include <iostream>
+#include <windows.h>
+#include "ThostFtdcTraderApi.h"
+#include "ThostFtdcMdApi.h"
+
+// thread 1: UI thread.
+// thread 2: logic thread.
+// thread 3: CTP thread.
+
+
+char g_mdFront[] = "tcp://121.37.80.177:20004";
+
+
+class CSimpleHandler : public CThostFtdcMdSpi
+{
+private:
+    CThostFtdcMdApi* m_pUserApi;
+
+public:
+    //CSimpleHandler(CThostFtdcMdApi *pUserApi) : m_pUserApi(pUserApi){}
+    CSimpleHandler(CThostFtdcMdApi* pUserApi)
+    {
+        this->m_pUserApi = pUserApi;
+    };
+
+    ~CSimpleHandler() {}
+
+    void onFrontConnected(char* BrokerID, char* UserID, char* Password)
+    {
+        // this function is called in thread 3.
+        CThostFtdcReqUserLoginField reqUserLogin;
+        strcpy(reqUserLogin.BrokerID, BrokerID);
+        strcpy(reqUserLogin.UserID, UserID);
+        strcpy(reqUserLogin.Password, Password);
+        this->m_pUserApi->ReqUserLogin(&reqUserLogin, 0);
+        
+    }
+
+    void OnRspUserLogin(CThostFtdcRspUserLoginField* pRspUserLogin,
+        CThostFtdcRspInfoField* pRspInfo, int nRequestID, bool bIsLast)
+    {
+        if (pRspInfo->ErrorID == 0) {
+            printf("Login successful!\n");
+        }
+        else {
+            printf("Login failed: %s\n", pRspInfo->ErrorMsg);
+        }
+    }
+    
+};
+
 
 int main()
 {
-    std::cout << "Hello World!\n";
+    CThostFtdcMdApi *api = CThostFtdcMdApi::CreateFtdcMdApi();
+    CSimpleHandler handler(api);
+    api->RegisterSpi(&handler);
+    api->RegisterFront(g_mdFront);
+    api->Init();
+    api->Join();
 }
 
 // 运行程序: Ctrl + F5 或调试 >“开始执行(不调试)”菜单
